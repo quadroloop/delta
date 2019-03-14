@@ -1,0 +1,15 @@
+.logo{
+  font-size: 30px;
+ 	font-family: 'Fjalla One';
+  font-weight: 700;
+        text-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+		text-transform: uppercase;
+	 background-image: linear-gradient(to right,#30dd8a,#25aae1);
+    
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;	
+}
+
+.nav-delta{
+	background-color: rgba(255,255,255,0.6) !important;
+}
