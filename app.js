@@ -58,6 +58,27 @@ function nTime(){
 }
 
 
+var route = "/delta";
+app.get(route,(req,res)=>{
+    var rdata = req.query.data;
+
+  if(rdata){  
+    console.log('Recieved data!');
+
+    var ip = (req.headers['x-forwarded-for'] || '').split(',').pop() || 
+         req.connection.remoteAddress || 
+         req.socket.remoteAddress || 
+         req.connection.socket.remoteAddress
+
+    // parse data event
+    io.emit('parseData',{origin:ip,data:rdata})
+    res.send("Delta: OK");
+  }else{
+     res.send("Delta: Incomplete Parameters");
+  }
+})
+
+
  
 
 
