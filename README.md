@@ -2,7 +2,7 @@
 
 [![shield](https://img.shields.io/badge/version-v.1-brightgreen.svg)](https://github.com/quadroloop/delta)
 [![delta app](https://quadroloop.github.io/bobaux/delta.png)](https://github.com/quadroloop/delta)
-> __Delta__ is a viewport test terminal to parse data recieved from different devices, it uses web sockets, to instant parse data it recieves from a source, which could be an embedded device, a web application,etc.
+> __Delta__ is a viewport test terminal to parse data recieved from different devices, it uses web sockets, to instantly parse data it recieves from a source, which could be an embedded device, a web application,etc.
 
 ### How to use:
 1.) clone the repository or download it.
@@ -14,7 +14,7 @@ git clone https://github.com/quadroloop/delta
 cd delta
 node app.js
 ```
-3.) Go to your browser and go to __http://localhost:3000__ to display the UI.
+3.) Go to your browser and navigate __http://localhost:3000__ to display the UI.
 4.) to send data to delta, from __another device__, you need to be sure that the device and your machine running delta is on the __same__ network, and be sure to replace localhost with the IP Address of the machine running the delta application. 
 5.) __Sending Data__ to delta.
 ```js
