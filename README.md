@@ -19,13 +19,13 @@ node app.js
 5.) __Sending Data__ to delta.
 ```js
 // in the same machine using browser url bar,postman or cURL
-http://localhost:3000/?data=[1,2,3,4,5]
+http://localhost:3000/delta/?data=[1,2,3,4,5]
 
 // from a different device where `192.168.1.8` is the IP Address of the computer running delta.
-http://192.168.1.8:3000/?data=[1,2,3,4,5]
+http://192.168.1.8:3000/delta/?data=[1,2,3,4,5]
 
 // via js using axios
-axios.get('http://192.168.1.8:3000/?data=[1,2,3,4,5]')
+axios.get('http://192.168.1.8:3000/delta/?data=[1,2,3,4,5]')
 .then(res=>{
     console.log(res.data);
 });
