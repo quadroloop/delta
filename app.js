@@ -8,6 +8,7 @@ var io = require('socket.io')(http);
 var path = require('path');
 var bodyParser = require('body-parser');
 var fs = fs || require('fs');
+var cors = require('cors')
 
 // init lowdb
 const low = require('lowdb')
@@ -20,7 +21,7 @@ const db = low(adapter)
 
 
 app.use(express.static('src'));
-
+app.use(cors());
 
 
 app.set('port', (process.env.PORT || 3000));
@@ -58,11 +59,9 @@ function nTime(){
 }
 
 
-var route = "/delta";
-app.get(route,(req,res)=>{
-    var rdata = req.query.data;
+app.get('/delta',(req,res)=>{
 
-  if(rdata){  
+  if(req.query){  
     console.log('Recieved data!');
 
     var ip = (req.headers['x-forwarded-for'] || '').split(',').pop() || 
@@ -71,7 +70,7 @@ app.get(route,(req,res)=>{
          req.connection.socket.remoteAddress
 
     // parse data event
-    io.emit('parseData',{origin:ip,data:rdata})
+    io.emit('delta',req.query)
     res.send("Delta: OK");
   }else{
      res.send("Delta: Incomplete Parameters");

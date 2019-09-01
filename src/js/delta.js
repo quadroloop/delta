@@ -6,35 +6,47 @@ function el(element){
 	return document.getElementById(element);
 }
 
-function pre(datax){
-   var p0 = datax.split("[").join("<span style='font-weight:700;color:blue'>[</span>");
-   var p1 = p0.split("]").join("<span style='font-weight:700;color:blue'>]</span>");
-   var p2 = p1.split(",").join("<span style='font-weight:700;' class='text-primary'>,</span>");
-   var p3 = p2.split("{").join("<span style='font-weight:700;' class='text-success'>{</span>");
-   var p4 = p3.split("}").join("<span style='font-weight:700;' class='text-success'>}</span>");
+socket.on('delta',(data)=>{
+  if(Object.keys(data).length !==0){
+        let datax = data.data
+      try {
+         var hexDelta = JSON.parse(datax);
+
+         el('state').className = "text-success"
+        el('state').innerHTML = "Active";
+
+        let parsedData = '';
+
+        let panelCount = 1;
+
+        hexDelta.forEach(item=>{
+           let datalist = ''
+           let dataobj = Object.keys(item);
+
+           dataobj.forEach(dataz=>{
+            datalist += `<li><strong><span class="text-info">${dataz}</span> : <span class="text-warning">${item[dataz]}</span></strong></li>`; 
+           })
+
+           parsedData += `
+             <div class="col-md-3 data-card m-2 p-3">
+          <p>Data Panel: ${panelCount}</p>
+            ${datalist}
+      </div>
+           `
+           panelCount++;
+        })
 
 
-   return p4;
-}
+         el('delta').innerHTML = parsedData;
 
-var parseCount = 1;
+      }
 
-socket.on("parseData",(delta)=>{
-
-el('delta').innerHTML += `
-    <div class="border rounded p-3 mb-2 data-panel" id="d${parseCount}">
-          <span><strong class="text-info">${parseCount}.)</strong>
-           
-             <strong class="text-warning">[${delta.origin}]</strong> -  <span class=" rounded p-2"/>
-               ${pre(delta.data)}
-           </span>
-         </div>
-`;
-
- el('cdata').href=`#d${parseCount}`;
- el('cdata').click();
-
-parseCount++;
-
-});
+      catch(error){
+        console.log(error)
+        console.log("wrong dataset!");
+        el('state').className = "text-danger"
+        el('state').innerHTML = "Broken";
+      }
+  }
+})
 

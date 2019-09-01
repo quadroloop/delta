@@ -2,7 +2,7 @@
 
 [![shield](https://img.shields.io/badge/version-v.1-brightgreen.svg)](https://github.com/quadroloop/delta)
 [![delta app](https://quadroloop.github.io/bobaux/delta.png)](https://github.com/quadroloop/delta)
-> __Delta__ is a viewport test terminal to parse data recieved from different devices, it uses web sockets, to instantly parse data it recieves from a source, which could be an embedded device, a web application,etc.
+> __Delta__ is a viewport test terminal to parse data recieved from different devices, it uses web sockets, to instantly visualize data it recieves from a source, which could be an embedded device, a web application,etc.
 
 ### How to use:
 1.) clone the repository or download it.
